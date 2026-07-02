@@ -1,0 +1,86 @@
+# Install fs if you don't have it yet
+# if (!requireNamespace("fs", quietly = TRUE)) install.packages("fs")
+
+# Print the folder tree
+fs::dir_tree("C:/Prasanth/myPrograms/R Programs/2026/AlleloBin")
+
+# Development
+setwd("C:/Prasanth/myPrograms/R Programs/2026/AlleloBin")
+devtools::load_all()
+
+# Test
+AlleloBin()
+
+# detach("package:AlleloBin", unload = TRUE)
+# Generate documentation
+devtools::document()
+
+# Install package locally
+devtools::install(
+  upgrade = FALSE,
+  dependencies = FALSE
+)
+
+# Optional package check
+devtools::check()
+
+# Fresh-session test: Restart R:
+library(AlleloBin)
+options(shiny.fullstacktrace = TRUE)
+AlleloBin()
+
+# Build distributable package
+# devtools::build_vignettes() # depreciated
+pkgbuild::build(vignettes = TRUE)
+devtools::build()
+
+# Optionally test in a clean session:
+install.packages(
+  "DataSpecsReviewer_1.0.0.tar.gz",
+  repos = NULL,
+  type = "source"
+)
+
+library(DataSpecsReviewer)
+data_review()
+
+
+# Before release
+# git add .
+# git commit -m "Release v1.0.0"
+# git tag v1.0.0
+
+# Search the keyword, "setNames":
+grep(
+  "setNames",
+  unlist(
+    lapply(
+      list.files("R", full.names = TRUE),
+      readLines
+    )
+  ),
+  value = TRUE
+)
+
+#------------------
+# search the file itself for the keyword, "read_one_file"
+rfiles <- list.files("R", full.names = TRUE)
+
+for (f in rfiles) {
+  txt <- readLines(f, warn = FALSE)
+
+  if (any(grepl("read_one_file", txt, fixed = TRUE))) {
+    cat("FOUND IN:", f, "\n")
+  }
+}
+
+
+# ======================================================================
+
+cd "C:/Prasanth/myPrograms/R Programs/2026/DSR/DataSpecsReviewer"
+git init
+git remote add origin https://github.com/vpprasanth/DataSpecsReviewer.git
+git add .
+git commit -m "Initial release v1.0.0"
+git branch -M main
+git push -u origin main

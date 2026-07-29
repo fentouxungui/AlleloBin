@@ -13,9 +13,10 @@ Idury, R.M. & Cardon, L.R. (1997). A Simple Method for Automated Allele Binning 
 }
 \examples{
 datafile <- system.file("extdata", "data.txt", package = "AlleloBin")
-infofile <- system.file("extdata", "info.txt", package = "AlleloBin")
+infofile <- system.file("extdata", "repeat_length.txt", package = "AlleloBin")
 data <- read.table(datafile, header = FALSE)
-info <- scan(infofile)
-allele_binning(data, info)
+info <- read.table(infofile, header = FALSE)
+repeat_lens <- as.numeric(info[[1]])
+allele_binning(data, repeat_lens, ploidy = 2)
 
 }

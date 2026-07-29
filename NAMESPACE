@@ -2,6 +2,7 @@
 
 export(AlleloBin)
 export(allele_binning)
+export(save_results)
 importFrom(openxlsx,addWorksheet)
 importFrom(openxlsx,writeData)
 importFrom(readxl,read_excel)

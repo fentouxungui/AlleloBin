@@ -2,29 +2,44 @@
 # if (!requireNamespace("fs", quietly = TRUE)) install.packages("fs")
 
 # Print the folder tree
-fs::dir_tree("C:/Prasanth/myPrograms/R Programs/2026/AlleloBin")
+fs::dir_tree(getwd())
 
-# Development
-setwd("C:/Prasanth/myPrograms/R Programs/2026/AlleloBin")
+# Delete the NAMESPACE file in the current working directory
+if (file.exists("NAMESPACE")) {
+  file.remove("NAMESPACE")
+  cat("NAMESPACE file successfully removed.\n")
+} else {
+  cat("NAMESPACE file not found.\n")
+}
+
+# Development & generate documentation
+# setwd("C:/Prasanth/myPrograms/R Programs/2026/AlleloBin")
 devtools::load_all()
-
-# Test
-AlleloBin()
-
-# detach("package:AlleloBin", unload = TRUE)
-# Generate documentation
 devtools::document()
 
+# detach("package:AlleloBin", unload = TRUE)
+# Delete the AlleloBin package
+# Delete the AlleloBin package safely
+if (system.file(package = "AlleloBin") != "") {
+    remove.packages("AlleloBin")
+    cat("AlleloBin package successfully removed.\n")
+} else {
+    cat("AlleloBin package not found.\n")
+}
+# Restart R
+rstudioapi::executeCommand("restartR")
+
 # Install package locally
-devtools::install(
-  upgrade = FALSE,
-  dependencies = FALSE
-)
+devtools::install(upgrade = FALSE, dependencies = FALSE)
+# Load and Test
+AlleloBin::AlleloBin()
 
 # Optional package check
 devtools::check()
 
 # Fresh-session test: Restart R:
+rstudioapi::executeCommand("restartR")
+
 library(AlleloBin)
 options(shiny.fullstacktrace = TRUE)
 AlleloBin()
@@ -36,13 +51,13 @@ devtools::build()
 
 # Optionally test in a clean session:
 install.packages(
-  "DataSpecsReviewer_1.0.0.tar.gz",
+  "AlleloBin_1.0.0.tar.gz",
   repos = NULL,
   type = "source"
 )
 
-library(DataSpecsReviewer)
-data_review()
+library(AlleloBin)
+AlleloBin()
 
 
 # Before release
@@ -74,12 +89,30 @@ for (f in rfiles) {
   }
 }
 
+#---------------------------------------------------------------------
+# Find all files recursively across all subfolders
+all_files <- list.files(path = ".", recursive = TRUE, full.names = TRUE)
+
+# Loop through every file to search for the keyword
+for (f in all_files) {
+  # Skip directories if they accidentally get listed
+  if (dir.exists(f)) next
+  
+  # Read file safely
+  txt <- readLines(f, warn = FALSE)
+
+  # Check for the specific keyword
+  if (any(grepl("DataSpecsReviewer", txt, fixed = TRUE))) {
+    cat("FOUND IN:", f, "\n")
+  }
+}
+
 
 # ======================================================================
 
-cd "C:/Prasanth/myPrograms/R Programs/2026/DSR/DataSpecsReviewer"
+cd "C:/Prasanth/myPrograms/R Programs/2026/AlleloBin"
 git init
-git remote add origin https://github.com/vpprasanth/DataSpecsReviewer.git
+git remote add origin https://github.com/vpprasanth/AlleloBin.git
 git add .
 git commit -m "Initial release v1.0.0"
 git branch -M main

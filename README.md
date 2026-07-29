@@ -42,13 +42,13 @@ devtools::install_github("vpprasanth/AlleloBin")
 library(AlleloBin)
 
 # 1. Load your raw fragment size genotyping data
-my_data <- read.csv(system.file("extdata", "data.txt", package = "AlleloBin"))
+my_data <- read.table(system.file("extdata", "data.txt", package = "AlleloBin"), header = FALSE)
 
 # 2. Load the corresponding marker configuration data (repeat lengths, etc.)
 marker_info <- read.table(system.file("extdata", "info.txt", package = "AlleloBin"), header = FALSE)
 
 # 3. Extract the repeat lengths vector from the info file
-repeat_lens <- marker_info\$RepeatLength 
+repeat_lens <- marker_info$V1 
 
 # 4. Run the binning process
 results <- allele_binning(data = my_data, repeat_lengths = repeat_lens, ploidy = 2)

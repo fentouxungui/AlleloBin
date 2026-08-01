@@ -1,16 +1,15 @@
 Package: AlleloBin
 Type: Package
 Title: Microsatellite Allele Binning
-Version: 2.0.0
+Version: 1.0.0
 Authors@R: c(
     person("Prasanth", "VP", email = "prasanth.stat@gmail.com", role = c("aut","cre")),
     person("Subhash", "Chandra", role = "aut"),
     person("Jayashree", "B", role = "aut"),
     person("Dave", "Hoisington", role = "aut")
     )
-Description: Provides allele binning functionality for SSR/microsatellite markers
-    using least-squares minimization (Idury & Cardon, 1997 <doi:10.1101/gr.7.11.1104>).
-    Includes a Shiny application for interactive use, summary statistics, and visualization.
+Description: Provides allele binning functionality for SSR/microsatellite markers using least-squares minimization (Idury & Cardon (1997) <doi:10.1101/gr.7.11.1104>).
+    Includes a 'Shiny' application for interactive use, summary statistics, and visualization.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

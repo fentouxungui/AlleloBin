@@ -6,6 +6,9 @@
 \usage{
 AlleloBin()
 }
+\value{
+No return value, launches 'Shiny' app
+}
 \description{
 Launches the Shiny application for allele binning.
 }

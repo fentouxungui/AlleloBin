@@ -3,6 +3,9 @@
 \name{example_data}
 \alias{example_data}
 \title{Example Data}
+\value{
+A data.frame with example SSR allele data
+}
 \description{
 Example SSR allele dataset (`data.txt`) and repeat length file (`info.txt`)
 included with the package.

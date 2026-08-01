@@ -14,5 +14,6 @@
 #' repeat_lens <- as.numeric(info[[1]])
 #' allele_binning(data, repeat_lens, ploidy = 2)
 #'
+#' @return A data.frame with example SSR allele data
 #' @name example_data
 NULL

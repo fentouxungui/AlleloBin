@@ -1,4 +1,4 @@
-# AlleloBin 2.0.0
+# AlleloBin 1.0.0
 - Added auto-detection of delimiters (comma, tab, semicolon, colon).
 - Improved header handling for repeat length files.
 - Vectorized binning functions for large datasets.

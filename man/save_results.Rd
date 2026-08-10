@@ -20,8 +20,16 @@ Each marker gets its own worksheet containing bin summary, allele calls,
 and marker summary with strict decimal formatting.
 }
 \examples{
-\dontrun{
-results <- allele_binning(data, repeat_lengths, ploidy = 2)
-save_results(results, "AlleloBin_Output.xlsx")
+\donttest{
+xlsx_file <- system.file("extdata", "data.xlsx", package = "AlleloBin")
+repeat_file <- system.file("extdata", "repeat_length.xlsx", package = "AlleloBin")
+
+data_xlsx <- openxlsx::read.xlsx(xlsx_file)
+
+# Ensure repeat_length is numeric vector, not data frame
+repeat_length <- as.numeric(openxlsx::read.xlsx(repeat_file)[[1]])
+
+results <- allele_binning(data_xlsx, repeat_length, ploidy = 2)
+save_results(results, file.path(tempdir(), "AlleloBin_Output.xlsx"))
 }
 }

@@ -49,6 +49,10 @@ AlleloBin()
 pkgbuild::build(vignettes = TRUE)
 devtools::build()
 
+# In Terminal setwd("C:/Prasanth/myPrograms/R Programs/2026")
+# Use Ctrl+Shift+V
+R CMD check --as-cran AlleloBin_1.0.0.tar.gz
+
 # Optionally test in a clean session:
 install.packages(
   "AlleloBin_1.0.0.tar.gz",

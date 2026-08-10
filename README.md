@@ -1,4 +1,4 @@
-# AlleloBin: A program for Allele Binning in Microsatellite Markers
+# AlleloBin: A Shiny Application for Allele Binning in Microsatellite Markers
 
 **AlleloBin** is an R package designed to automate the conversion of imprecise fragment sizes from automated DNA sequencers into representative, discrete allele sizes. It implements and extends the least-squares minimization algorithm developed by Idury & Cardon (1997) to eliminate time-consuming manual intervention in high-throughput genotyping workflows.
 

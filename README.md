@@ -1,6 +1,7 @@
 # AlleloBin: A Shiny Application for Allele Binning in Microsatellite Markers
 
 [![CRAN status](https://www.r-pkg.org/badges/version/AlleloBin)](https://CRAN.R-project.org/package=AlleloBin)
+[![GitHub release](https://img.shields.io/github/v/release/vpprasanth/AlleloBin)](https://github.com/vpprasanth/AlleloBin/releases)
 
 **AlleloBin** is an R package designed to automate the conversion of imprecise fragment sizes from automated DNA sequencers into representative, discrete allele sizes. It implements and extends the least-squares minimization algorithm developed by Idury & Cardon (1997) to eliminate time-consuming manual intervention in high-throughput genotyping workflows.
 

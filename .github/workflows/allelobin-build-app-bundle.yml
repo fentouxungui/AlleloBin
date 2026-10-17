@@ -50,7 +50,7 @@ env:
   APP_DESC: "Shiny application for allele binning in microsatellite markers"
   APP_HOMEPAGE: "https://github.com/vpprasanth/AlleloBin"
   APP_LICENSE: "GPL-3.0"
-  APP_MODE: "auto"
+  APP_MODE: "flat"
   APP_SUBDIR: "inst/shiny-examples/AlleloBinApp"
   PKG_SUBDIR: "."
   ENTRY_FN: ""
